@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+name: "Export GitHub Actions runtime variables"
+description: "Export GitHub Actions runtime variables"
+runs:
+  using: "composite"
+  steps:
+    - uses: "actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea"
+      with:
+        script: |
+          Object.entries(process.env).forEach(([k, v]) => {
+            if (k.startsWith("ACTIONS_")) core.exportVariable(k, v);
+          });
