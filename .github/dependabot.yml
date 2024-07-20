@@ -6,3 +6,6 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      github-actions-all:
+        patterns: ["*"]
